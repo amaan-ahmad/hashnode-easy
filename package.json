@@ -1,0 +1,12 @@
+{
+  "name": "node-starter",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "marked": "^2.1.1",
+    "marked-terminal": "^4.1.1"
+  },
+  "scripts": {
+    "start": "node index.js"
+  }
+}
