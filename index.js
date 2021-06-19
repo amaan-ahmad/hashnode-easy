@@ -1,5 +1,16 @@
-const contentMD = require('./content.js');
-const { marked } = require('./config.js');
+// onboard -> welcome (after)
+// options -> hot, new, featured
+// login -> creating, reacting, etc..
 
-// Show the parsed data
-console.log(marked(contentMD));
+const chalk = require("chalk");
+const vorpal = require("./utils/vorpal");
+
+const menu = require("./modules/menu");
+
+vorpal.command("read", "enables reading").action(function (args, cb) {
+  this.log(chalk.bgBlue.white.bold("--- Welcome to Hashnode easy ---"));
+  menu();
+  cb();
+});
+
+vorpal.delimiter("hashnode-easy $ : ").show();

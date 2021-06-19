@@ -21,4 +21,16 @@ async function getBestStories() {
     .catch(console.error);
 }
 // https://hashnode.com/ajax/post/lets-talk-with-mays-top-5-hashnode-authors-ckq0jiixv05nc5ws1frwk181x
-module.exports = { getBestStories };
+
+async function getPostContent(slug, cuid) {
+  const url = `https://hashnode.com/ajax/post/${slug}-${cuid}`;
+  return fetch(url)
+    .then((res) => res.text())
+    .then(JSON.parse)
+    .then((res) => {
+      return res.post.contentMarkdown;
+    })
+    .catch(console.error);
+}
+
+module.exports = { getBestStories, getPostContent };
