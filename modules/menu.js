@@ -2,12 +2,11 @@ const {
   TRENDING,
   NEW,
   FEATURED,
-  // TH_ARTICLES,
-  // SEARCH_ARTICLES,
   COMMUNITY,
   EXIT,
   TH_ARTICLES,
   SEARCH_ARTICLES,
+  ARTICLES_BY_USER,
 } = require("../values/choices");
 const {
   trending,
@@ -16,6 +15,7 @@ const {
   community,
   townhall,
   searchInput,
+  userInput,
 } = require("./posts");
 const inquirer = require("inquirer");
 const vorpal = require("../utils/vorpal");
@@ -34,6 +34,7 @@ async function menu() {
           NEW,
           TH_ARTICLES,
           SEARCH_ARTICLES,
+          ARTICLES_BY_USER,
           COMMUNITY,
           EXIT,
         ],
@@ -62,11 +63,16 @@ async function menu() {
           community();
 
         case TH_ARTICLES:
+          vorpal.log("Loading...\n");
           townhall();
           break;
 
         case SEARCH_ARTICLES:
           searchInput();
+          break;
+
+        case ARTICLES_BY_USER:
+          userInput();
           break;
 
         case EXIT:

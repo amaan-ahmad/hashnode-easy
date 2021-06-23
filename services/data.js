@@ -45,6 +45,40 @@ async function getTownHallStories() {
     });
 }
 
+async function getArticlesByUsername(username) {
+  const query = `query{
+    user(username: "${username}"){
+  	publication{
+      posts{
+        slug
+        cuid
+        title
+      }
+    }
+  }
+  }`;
+
+  return fetch("https://api.hashnode.com/", {
+    body: JSON.stringify({ query }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+    method: "POST",
+  })
+    .then((res) => res.text())
+    .then(JSON.parse)
+    .then((res) => {
+      return {
+        data: {
+          storiesFeed: res.data.user.publication
+            ? res.data.user.publication.posts
+            : [],
+        },
+      };
+    })
+    .catch(console.error);
+}
+
 async function getPostContent(slug, cuid) {
   const url = `https://hashnode.com/ajax/post/${slug}-${cuid}`;
   return fetch(url)
@@ -102,4 +136,10 @@ async function search(query) {
     .catch(console.error);
 }
 
-module.exports = { getStories, getPostContent, getTownHallStories, search };
+module.exports = {
+  getStories,
+  getPostContent,
+  getTownHallStories,
+  search,
+  getArticlesByUsername,
+};

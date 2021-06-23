@@ -3,6 +3,7 @@ const {
   getStories,
   getTownHallStories,
   search,
+  getArticlesByUsername,
 } = require("../services/data");
 const inquirer = require("inquirer");
 const vorpal = require("../utils/vorpal");
@@ -43,8 +44,25 @@ function searchInput() {
     .catch(vorpal.error);
 }
 
+function userInput() {
+  inquirer
+    .prompt({
+      type: "input",
+      name: "user_name",
+      message: "Username: ",
+    })
+    .then(({ user_name }) => {
+      getArticlesByUsername(user_name).then(renderList).then(vorpal.error);
+    })
+    .catch(vorpal.error);
+}
+
 function renderList({ data }) {
   const { storiesFeed } = data;
+  if (storiesFeed.length === 0) {
+    vorpal.log("No results returned. ");
+    return;
+  }
   const titles = [];
   storiesFeed.forEach(({ title }) => {
     titles.push(title);
@@ -83,4 +101,5 @@ module.exports = {
   community,
   townhall,
   searchInput,
+  userInput,
 };
