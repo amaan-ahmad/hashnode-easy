@@ -1,7 +1,7 @@
 const TRENDING = "Trending";
 const NEW = "New";
 const FEATURED = "Featured";
-const TH_ARTICLES = "Townhall articles";
+const TH_ARTICLES = "Recent Townhall articles";
 const SEARCH_ARTICLES = "Search for articles";
 const COMMUNITY = "Community";
 const EXIT = "EXIT";
