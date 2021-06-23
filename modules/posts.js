@@ -88,6 +88,7 @@ function renderList({ data }) {
             .catch(vorpal.log);
         }
       });
+      vorpal.delimiter("hashnode-easy $ : ").show();
     })
     .catch((err) => {
       vorpal.log(err);
