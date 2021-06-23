@@ -1,8 +1,8 @@
 const fetch = require("node-fetch");
 
-async function getBestStories() {
+async function getStories(type) {
   const query = `query{
-    storiesFeed(type: BEST){
+    storiesFeed(type: ${type}){
       title
       slug
       cuid
@@ -33,4 +33,4 @@ async function getPostContent(slug, cuid) {
     .catch(console.error);
 }
 
-module.exports = { getBestStories, getPostContent };
+module.exports = { getStories, getPostContent };

@@ -1,10 +1,11 @@
-const { getBestStories, getPostContent } = require("../services/data");
+const { getPostContent, getStories } = require("../services/data");
 const inquirer = require("inquirer");
 const vorpal = require("../utils/vorpal");
 const { marked } = require("../config");
+const { BEST } = require("../values/stories");
 
 function trending() {
-  getBestStories().then(renderTrendingList).catch(vorpal.error);
+  getStories(BEST).then(renderTrendingList).catch(vorpal.error);
 }
 
 function renderTrendingList({ data }) {

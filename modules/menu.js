@@ -1,16 +1,16 @@
 const {
   TRENDING,
-  NEW,
-  FEATURED,
-  TH_ARTICLES,
-  SEARCH_ARTICLES,
+  // NEW,
+  // FEATURED,
+  // TH_ARTICLES,
+  // SEARCH_ARTICLES,
   EXIT,
 } = require("../values/choices");
 const trending = require("./trending");
 const inquirer = require("inquirer");
 const vorpal = require("../utils/vorpal");
 
-function menu() {
+async function menu() {
   vorpal.hide();
   inquirer
     .prompt([
@@ -18,7 +18,8 @@ function menu() {
         type: "list",
         name: "type",
         message: "what you want to read? ",
-        choices: [TRENDING, NEW, FEATURED, TH_ARTICLES, SEARCH_ARTICLES, EXIT],
+        choices: [TRENDING, EXIT],
+        // choices: [TRENDING, NEW, FEATURED, TH_ARTICLES, SEARCH_ARTICLES, EXIT],
       },
     ])
     .then((answers) => {
@@ -28,18 +29,18 @@ function menu() {
           trending();
           break;
 
-        case NEW:
-          break;
+        // case NEW:
+        //   break;
 
-        case FEATURED:
-          break;
+        // case FEATURED:
+        //   break;
 
-        case TH_ARTICLES:
-          break;
+        // case TH_ARTICLES:
+        //   break;
 
-        case SEARCH_ARTICLES:
-          // vorpal.delimiter("Search: ").show();
-          break;
+        // case SEARCH_ARTICLES:
+        //   // vorpal.delimiter("Search: ").show();
+        //   break;
 
         case EXIT:
           break;
@@ -47,7 +48,8 @@ function menu() {
           vorpal.log(chalk.yellow("Invalid selection"));
           break;
       }
-    });
+    })
+    .catch(vorpal.log);
 }
 
 module.exports = menu;
