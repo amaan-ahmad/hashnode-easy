@@ -2,6 +2,7 @@ const {
   getPostContent,
   getStories,
   getTownHallStories,
+  search,
 } = require("../services/data");
 const inquirer = require("inquirer");
 const vorpal = require("../utils/vorpal");
@@ -27,6 +28,19 @@ function community() {
 
 function townhall() {
   getTownHallStories().then(renderList).catch(vorpal.error);
+}
+
+function searchInput() {
+  inquirer
+    .prompt({
+      type: "input",
+      name: "query",
+      message: "Search a keyword: ",
+    })
+    .then(({ query }) => {
+      search(query).then(renderList).then(vorpal.error);
+    })
+    .catch(vorpal.error);
 }
 
 function renderList({ data }) {
@@ -62,4 +76,11 @@ function renderList({ data }) {
     });
 }
 
-module.exports = { trending, featured, newStories, community, townhall };
+module.exports = {
+  trending,
+  featured,
+  newStories,
+  community,
+  townhall,
+  searchInput,
+};

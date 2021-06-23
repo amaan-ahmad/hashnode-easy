@@ -56,4 +56,50 @@ async function getPostContent(slug, cuid) {
     .catch(console.error);
 }
 
-module.exports = { getStories, getPostContent, getTownHallStories };
+async function search(query) {
+  return fetch(
+    "https://amerdmzm12-dsn.algolia.net/1/indexes/posts/query?x-algolia-agent=Algolia%20for%20JavaScript%20(4.9.0)%3B%20Browser",
+    {
+      headers: {
+        accept: "*/*",
+        "accept-language": "en-GB,en-US;q=0.9,en;q=0.8",
+        "content-type": "application/x-www-form-urlencoded",
+        "sec-ch-ua":
+          '" Not;A Brand";v="99", "Google Chrome";v="91", "Chromium";v="91"',
+        "sec-ch-ua-mobile": "?0",
+        "sec-fetch-dest": "empty",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-site": "cross-site",
+        "x-algolia-api-key": "295b17c8b7be099e43e2b2b2b63a7589",
+        "x-algolia-application-id": "AMERDMZM12",
+      },
+      referrer: "https://hashnode.com/",
+      referrerPolicy: "strict-origin-when-cross-origin",
+      body: `{"query":"${query}","filters":"type:question OR type:story AND totalReactions >= 25","hitsPerPage":5,"page":0}`,
+      method: "POST",
+      mode: "cors",
+      credentials: "omit",
+    }
+  )
+    .then((res) => res.text())
+    .then(JSON.parse)
+    .then((res) => {
+      const storiesFeed = [];
+      res.hits.forEach(({ slug, title, cuid }) => {
+        storiesFeed.push({
+          slug,
+          title,
+          cuid,
+        });
+      });
+      const result = {
+        data: {
+          storiesFeed,
+        },
+      };
+      return result;
+    })
+    .catch(console.error);
+}
+
+module.exports = { getStories, getPostContent, getTownHallStories, search };
