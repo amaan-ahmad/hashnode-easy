@@ -3,6 +3,7 @@ const inquirer = require("inquirer");
 const vorpal = require("../utils/vorpal");
 const { marked } = require("../config");
 const { BEST, FEATURED, NEW } = require("../values/stories");
+const { COMMUNITY } = require("../values/stories");
 
 function trending() {
   getStories(BEST).then(renderList).catch(vorpal.error);
@@ -14,6 +15,10 @@ function featured() {
 
 function newStories() {
   getStories(NEW).then(renderList).catch(vorpal.error);
+}
+
+function community() {
+  getStories(COMMUNITY).then(renderList).catch(vorpal.error);
 }
 
 function renderList({ data }) {
@@ -49,4 +54,4 @@ function renderList({ data }) {
     });
 }
 
-module.exports = { trending, featured, newStories };
+module.exports = { trending, featured, newStories, community };
