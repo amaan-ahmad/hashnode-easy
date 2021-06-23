@@ -2,8 +2,9 @@ const { getBestStories, getPostContent } = require("../services/data");
 const inquirer = require("inquirer");
 const vorpal = require("../utils/vorpal");
 const { marked } = require("../config");
+
 function trending() {
-  getBestStories().then(renderTrendingList).catch(console.error);
+  getBestStories().then(renderTrendingList).catch(vorpal.error);
 }
 
 function renderTrendingList({ data }) {
@@ -27,7 +28,9 @@ function renderTrendingList({ data }) {
         if (story.title === answer.article) {
           const { slug, cuid } = story;
           getPostContent(slug, cuid)
-            .then((data) => vorpal.log(marked(data)))
+            .then((data) => {
+              vorpal.log(marked(data));
+            })
             .catch(vorpal.log);
         }
       });
