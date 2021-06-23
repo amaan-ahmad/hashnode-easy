@@ -1,12 +1,12 @@
 const {
   TRENDING,
   // NEW,
-  // FEATURED,
+  FEATURED,
   // TH_ARTICLES,
   // SEARCH_ARTICLES,
   EXIT,
 } = require("../values/choices");
-const trending = require("./trending");
+const { trending, featured } = require("./posts");
 const inquirer = require("inquirer");
 const vorpal = require("../utils/vorpal");
 
@@ -18,7 +18,7 @@ async function menu() {
         type: "list",
         name: "type",
         message: "what you want to read? ",
-        choices: [TRENDING, EXIT],
+        choices: [TRENDING, FEATURED, EXIT],
         // choices: [TRENDING, NEW, FEATURED, TH_ARTICLES, SEARCH_ARTICLES, EXIT],
       },
     ])
@@ -32,8 +32,10 @@ async function menu() {
         // case NEW:
         //   break;
 
-        // case FEATURED:
-        //   break;
+        case FEATURED:
+          vorpal.log("Loading...\n");
+          featured();
+          break;
 
         // case TH_ARTICLES:
         //   break;

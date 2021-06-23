@@ -1,3 +1,4 @@
 const BEST = "BEST";
+const FEATURED = "FEATURED";
 
-module.exports = { BEST };
+module.exports = { BEST, FEATURED };

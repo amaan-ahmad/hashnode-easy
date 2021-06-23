@@ -2,13 +2,17 @@ const { getPostContent, getStories } = require("../services/data");
 const inquirer = require("inquirer");
 const vorpal = require("../utils/vorpal");
 const { marked } = require("../config");
-const { BEST } = require("../values/stories");
+const { BEST, FEATURED } = require("../values/stories");
 
 function trending() {
-  getStories(BEST).then(renderTrendingList).catch(vorpal.error);
+  getStories(BEST).then(renderList).catch(vorpal.error);
 }
 
-function renderTrendingList({ data }) {
+function featured() {
+  getStories(FEATURED).then(renderList).catch(vorpal.error);
+}
+
+function renderList({ data }) {
   const { storiesFeed } = data;
   const titles = [];
   storiesFeed.forEach(({ title }) => {
@@ -19,7 +23,7 @@ function renderTrendingList({ data }) {
     .prompt({
       type: "list",
       name: "article",
-      message: "Here are some trending articles from hashnode!",
+      message: "Here are your awesome articles from hashnode!",
       choices: titles,
       loop: false,
       pageSize: 7,
@@ -41,4 +45,4 @@ function renderTrendingList({ data }) {
     });
 }
 
-module.exports = trending;
+module.exports = { trending, featured };
