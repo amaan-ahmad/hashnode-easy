@@ -40,6 +40,7 @@ async function menu() {
       },
     ])
     .then((answers) => {
+      console.clear();
       switch (answers.type) {
         case TRENDING:
           vorpal.log("Loading...\n");

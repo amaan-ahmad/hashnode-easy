@@ -1,11 +1,12 @@
-// onboard -> welcome (after)
-// options -> hot, new, featured
-// login -> creating, reacting, etc..
-
 const chalk = require("chalk");
 const vorpal = require("./utils/vorpal");
 
 const menu = require("./modules/menu");
+const hashnode = require("./values/art");
+
+console.clear();
+
+vorpal.log(chalk.blue(hashnode));
 
 vorpal.log(chalk.bgBlue.white.bold("--- Welcome to Hashnode easy ---"));
 
