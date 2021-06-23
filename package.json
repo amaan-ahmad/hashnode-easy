@@ -1,7 +1,7 @@
 {
-  "name": "node-starter",
-  "version": "0.0.0",
-  "private": true,
+  "name": "hashnode-easy",
+  "version": "1.0.0",
+  "private": false,
   "dependencies": {
     "chalk": "^4.1.1",
     "inquirer": "^8.1.1",
@@ -10,6 +10,21 @@
     "node-fetch": "^2.6.1",
     "vorpal": "^1.12.0"
   },
+  "repository": {
+    "url": "https://github.com/amaan-ahmad/hashnode-easy",
+    "type": "git"
+  },
+  "author": {
+    "name": "Amaan Ahmad",
+    "email": "hello@amaan.codes"
+  },
+  "description": "Hashnode-easy is a CLI that enables you to read hashnode blogs right from your terminal.",
+  "keywords": [
+    "hashnode-easy",
+    "hashnode",
+    "blogs",
+    "developer-articles"
+  ],
   "scripts": {
     "start": "node index.js"
   }
