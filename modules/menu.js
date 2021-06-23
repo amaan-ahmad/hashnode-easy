@@ -38,10 +38,10 @@ async function menu() {
           COMMUNITY,
           EXIT,
         ],
+        pageSize: 10,
       },
     ])
     .then((answers) => {
-      console.clear();
       switch (answers.type) {
         case TRENDING:
           vorpal.log("Loading...\n");
@@ -61,6 +61,7 @@ async function menu() {
         case COMMUNITY:
           vorpal.log("Loading...\n");
           community();
+          break;
 
         case TH_ARTICLES:
           vorpal.log("Loading...\n");
