@@ -29,15 +29,19 @@ async function getTownHallStories() {
     .then((res) => res.text())
     .then(JSON.parse)
     .then((res) => {
-      const result = [];
+      const storiesFeed = [];
       res.posts.forEach(({ slug, title, cuid }) => {
-        result.push({
+        storiesFeed.push({
           slug,
           title,
           cuid,
         });
       });
-      return result;
+      return {
+        data: {
+          storiesFeed,
+        },
+      };
     });
 }
 
