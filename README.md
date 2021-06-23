@@ -1,3 +1,3 @@
-# hashnode-easy
+# Hashnode Easy
 
-[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/hashnode-easy)
+hashnode-easy is a CLI that enables you to read hashnode blogs right from your terminal.
