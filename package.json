@@ -14,6 +14,7 @@
     "url": "https://github.com/amaan-ahmad/hashnode-easy",
     "type": "git"
   },
+  "main": "index.js",
   "author": {
     "name": "Amaan Ahmad",
     "email": "hello@amaan.codes"
