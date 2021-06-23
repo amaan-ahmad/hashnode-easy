@@ -1,6 +1,6 @@
 {
   "name": "hashnode-easy",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": false,
   "dependencies": {
     "chalk": "^4.1.1",
