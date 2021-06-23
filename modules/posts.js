@@ -1,4 +1,8 @@
-const { getPostContent, getStories } = require("../services/data");
+const {
+  getPostContent,
+  getStories,
+  getTownHallStories,
+} = require("../services/data");
 const inquirer = require("inquirer");
 const vorpal = require("../utils/vorpal");
 const { marked } = require("../config");
@@ -19,6 +23,10 @@ function newStories() {
 
 function community() {
   getStories(COMMUNITY).then(renderList).catch(vorpal.error);
+}
+
+function townhall() {
+  getTownHallStories().then(renderList).catch(vorpal.error);
 }
 
 function renderList({ data }) {
@@ -54,4 +62,4 @@ function renderList({ data }) {
     });
 }
 
-module.exports = { trending, featured, newStories, community };
+module.exports = { trending, featured, newStories, community, townhall };

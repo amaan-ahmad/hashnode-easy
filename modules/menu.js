@@ -6,8 +6,15 @@ const {
   // SEARCH_ARTICLES,
   COMMUNITY,
   EXIT,
+  TH_ARTICLES,
 } = require("../values/choices");
-const { trending, featured, newStories, community } = require("./posts");
+const {
+  trending,
+  featured,
+  newStories,
+  community,
+  townhall,
+} = require("./posts");
 const inquirer = require("inquirer");
 const vorpal = require("../utils/vorpal");
 
@@ -19,8 +26,7 @@ async function menu() {
         type: "list",
         name: "type",
         message: "what you want to read? ",
-        choices: [TRENDING, FEATURED, NEW, COMMUNITY, EXIT],
-        // choices: [TRENDING, NEW, FEATURED, TH_ARTICLES, SEARCH_ARTICLES, EXIT],
+        choices: [TRENDING, FEATURED, NEW, TH_ARTICLES, COMMUNITY, EXIT],
       },
     ])
     .then((answers) => {
@@ -44,8 +50,9 @@ async function menu() {
           vorpal.log("Loading...\n");
           community();
 
-        // case TH_ARTICLES:
-        //   break;
+        case TH_ARTICLES:
+          townhall();
+          break;
 
         // case SEARCH_ARTICLES:
         //   // vorpal.delimiter("Search: ").show();
