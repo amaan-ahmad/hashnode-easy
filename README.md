@@ -4,12 +4,11 @@ hashnode-easy is a CLI that enables you to read hashnode blogs right from your t
 
 ## Setup
 
-Method - 1 (using executable)
+- run `yarn global add hashnode-easy` or `npm install -g hashnode-easy`
+- now, run `hnez` from any terminal.
 
-- Add the path of the execuatable file to environment variables.
-- now from anywhere on a cmd, just type executable name to run that program.
+## Usage
 
-Methode - 2 (using yarn)
-
-- run `yarn global add hashnode-easy` or `npm i hashnode-easy -g`
-- now, run `hashnode-easy` from any terminal.
+- `help` to list commands
+- `read` to start reading blogs
+- `exit` to quit the CLI
