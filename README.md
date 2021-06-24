@@ -1,3 +1,6 @@
+![image](https://user-images.githubusercontent.com/27350808/123235185-42f17e00-d4f9-11eb-82f4-43a5cec51d37.png)
+
+
 # Hashnode Easy
 
 hashnode-easy is a CLI that enables you to read hashnode blogs right from your terminal.
